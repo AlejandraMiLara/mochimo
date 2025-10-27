@@ -46,7 +46,7 @@ findAll() {
     });
   }
 
-async findOne(id: string) {
+  async findOne(id: string) {
     const user = await this.prisma.user.findUnique({
       where: { id },
     });
@@ -80,7 +80,7 @@ async findOne(id: string) {
       await this.prisma.user.delete({
         where: { id },
       });
-      return { message: `Usuario '${id}' eliminado correctamente` };
+      return { message: `Usuario eliminado correctamente` };
     } catch (error) {
       throw new NotFoundException(`No se pudo eliminar. Usuario no encontrado.`);
     }
