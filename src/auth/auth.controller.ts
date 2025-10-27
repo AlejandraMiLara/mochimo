@@ -15,12 +15,11 @@ export class AuthController {
   ) {
     const { accessToken } = await this.authService.login(loginUserDto);
 
-    // Configurar la cookie
     response.cookie('access_token', accessToken, {
-      httpOnly: true, // Seguridad: No accesible por JS
-      secure: false, // En producción debe ser 'true' (solo HTTPS)
-      sameSite: 'strict', // Protección CSRF
-      maxAge: 3600000, // 1 hora (debe coincidir con 'expiresIn' del JWT)
+      httpOnly: true,
+      secure: false,
+      sameSite: 'strict',
+      maxAge: 3600000,
     });
 
     return { message: 'Login exitoso' };
@@ -28,10 +27,9 @@ export class AuthController {
 
   @Post('logout')
   async logout(@Res({ passthrough: true }) response: Response) {
-    // Para desloguear, simplemente limpiamos la cookie
     response.clearCookie('access_token', {
       httpOnly: true,
-      secure: false, // (igual que en login)
+      secure: false,
       sameSite: 'strict',
     });
     return { message: 'Logout exitoso' };
