@@ -85,4 +85,13 @@ async findOne(id: string) {
       throw new NotFoundException(`No se pudo eliminar. Usuario no encontrado.`);
     }
   }
+
+async findByEmail(email: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+    });
+    return user;
+  }
+
+
 }
