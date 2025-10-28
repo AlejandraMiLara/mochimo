@@ -9,10 +9,15 @@ checar tener instalado node: node -v
 checar tener instalado npm: npm -v
 
 npm install
+
 npm i dotenv
+
 npm install prisma --save-dev
+
 npx prisma init --datasource-provider postgresql
+
 npm install -D dotenv-cli
+
 npm run prisma:dev
 
 Descargan POSTGRESQL:
